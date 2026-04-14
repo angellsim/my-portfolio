@@ -88,7 +88,7 @@ export function LaboratorySection() {
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
-        className="rounded-2xl border border-copper/25 bg-white/45 p-6"
+        className="glass-panel rounded-2xl p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
           Exploracao IA
@@ -104,7 +104,7 @@ export function LaboratorySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="rounded-2xl border border-copper/20 bg-white/45 p-5"
+          className="glass-panel rounded-2xl p-5"
         >
           <div className="flex items-center gap-2">
             <Bot className="h-5 w-5 text-copper" />
@@ -133,7 +133,7 @@ export function LaboratorySection() {
               value={prompt}
               onChange={(event) => setPrompt(event.target.value)}
               placeholder="Pergunte algo sobre IA, dados ou prompts..."
-              className="h-11 flex-1 rounded-lg border border-copper/25 bg-white/70 px-3 font-mono text-sm text-foreground placeholder:text-foreground/45"
+              className="glass-input h-11 flex-1 rounded-lg px-3 font-mono text-sm text-foreground placeholder:text-foreground/45"
             />
             <button type="submit" className="brass-button h-11 rounded-lg px-4 text-sm">
               Gerar resposta
@@ -146,7 +146,7 @@ export function LaboratorySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.52, delay: 0.06 }}
-          className="rounded-2xl border border-copper/20 bg-white/45 p-5"
+          className="glass-panel rounded-2xl p-5"
         >
           <div className="flex items-center gap-2">
             <FlaskConical className="h-5 w-5 text-copper" />
@@ -190,7 +190,7 @@ export function LaboratorySection() {
             ))}
           </div>
 
-          <div className="mt-4 inline-flex items-center gap-2 rounded-md border border-copper/25 bg-white/70 px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-copper">
+          <div className="glass-pill mt-4 inline-flex items-center gap-2 rounded-md px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-copper">
             <Sparkles className="h-3.5 w-3.5" />
             Filtros combinaveis em tempo real
           </div>

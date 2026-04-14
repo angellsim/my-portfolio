@@ -42,7 +42,7 @@ export function ProjectsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55 }}
-        className="rounded-2xl border border-copper/25 bg-white/45 p-6"
+        className="glass-panel rounded-2xl p-6"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -51,7 +51,7 @@ export function ProjectsSection() {
             </p>
             <h3 className="mt-2 font-heading text-3xl text-brass">Projetos em Foco</h3>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-copper/25 bg-white/60 px-3 py-1 font-mono text-xs uppercase tracking-wide text-copper">
+          <span className="glass-pill inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-xs uppercase tracking-wide text-copper">
             <FolderGit2 className="h-3.5 w-3.5" />
             Dados simulados do GitHub
           </span>
@@ -63,7 +63,7 @@ export function ProjectsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6, delay: 0.08 }}
-        className="rounded-2xl border border-copper/25 bg-gradient-to-r from-white/55 via-white/40 to-transparent p-5"
+        className="glass-panel rounded-2xl p-5"
       >
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-copper/95">
           Destaque Atual
@@ -103,7 +103,7 @@ export function ProjectsSection() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-copper/35 bg-coal/60 px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-copper"
+                  className="glass-pill rounded-md px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-copper"
                 >
                   {tech}
                 </span>

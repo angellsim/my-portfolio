@@ -20,7 +20,7 @@ export function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.5 }}
-        className="rounded-2xl border border-copper/25 bg-white/45 p-6 md:p-8"
+        className="glass-panel rounded-2xl p-6 md:p-8"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
           Contato
@@ -75,7 +75,7 @@ export function ContactSection() {
         </div>
       </motion.div>
 
-      <footer className="steam-footer mt-8 rounded-2xl border border-copper/25 p-5">
+      <footer className="steam-footer glass-panel mt-8 rounded-2xl p-5">
         <div className="steam-layer" aria-hidden="true">
           <span className="steam-puff steam-puff-1" />
           <span className="steam-puff steam-puff-2" />

@@ -52,7 +52,7 @@ export function TimelineSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55 }}
-        className="rounded-2xl border border-copper/25 bg-white/45 p-6"
+        className="glass-panel rounded-2xl p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
           Jornada
@@ -63,7 +63,7 @@ export function TimelineSection() {
       </motion.div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-copper/20 bg-white/45 p-5">
+        <div className="glass-panel rounded-2xl p-5">
           <h4 className="font-heading text-2xl text-brass">Experiencia</h4>
           <ol className="timeline-rail mt-4 space-y-4">
             {experience.map((item, index) => (
@@ -90,7 +90,7 @@ export function TimelineSection() {
           </ol>
         </div>
 
-        <div className="rounded-2xl border border-copper/20 bg-white/45 p-5">
+        <div className="glass-panel rounded-2xl p-5">
           <h4 className="font-heading text-2xl text-brass">Educacao</h4>
           <ol className="timeline-rail mt-4 space-y-4">
             {education.map((item) => (
@@ -133,7 +133,7 @@ export function TimelineSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55, delay: 0.08 }}
-        className="rounded-2xl border border-copper/25 bg-gradient-to-r from-white/60 via-white/40 to-transparent p-6"
+        className="glass-panel rounded-2xl p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
           Certificados
@@ -142,7 +142,7 @@ export function TimelineSection() {
           {certificates.map((cert) => (
             <span
               key={cert}
-              className="inline-flex items-center rounded-md border border-brass/40 bg-coal/65 px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-brass"
+              className="glass-pill inline-flex items-center rounded-md px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-brass"
             >
               {cert}
             </span>

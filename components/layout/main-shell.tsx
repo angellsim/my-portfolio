@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Cog, Gauge, Zap } from "lucide-react";
 
@@ -14,17 +15,29 @@ const items = [
 ];
 
 export function MainShell({ children }: MainShellProps) {
+  const [causticsEnabled, setCausticsEnabled] = useState(true);
+
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-10 md:px-10">
+    <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-10 md:px-10">
+      {causticsEnabled ? <div aria-hidden="true" className="caustics-layer" /> : null}
       <motion.header
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55 }}
-        className="rounded-2xl border border-copper/30 bg-white/45 p-6 backdrop-blur-sm"
+        className="glass-panel relative z-10 rounded-2xl p-6"
       >
-        <p className="font-mono text-xs uppercase tracking-[0.35em] text-copper/90">
-          Visao Geral
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="font-mono text-xs uppercase tracking-[0.35em] text-copper/90">
+            Visao Geral
+          </p>
+          <button
+            type="button"
+            onClick={() => setCausticsEnabled((prev) => !prev)}
+            className="glass-pill rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-copper transition hover:text-foreground"
+          >
+            Caustics: {causticsEnabled ? "On" : "Off"}
+          </button>
+        </div>
         <h1 className="mt-3 font-heading text-4xl tracking-wide text-brass md:text-5xl">
           Horizonte Criativo
         </h1>
@@ -32,7 +45,7 @@ export function MainShell({ children }: MainShellProps) {
           {items.map(({ icon: Icon, label, value }) => (
             <div
               key={label}
-              className="rounded-xl border border-copper/20 bg-white/50 p-3 text-sm"
+              className="glass-panel rounded-xl p-3 text-sm"
             >
               <div className="flex items-center gap-2 font-mono uppercase tracking-wide text-copper/85">
                 <Icon className="h-4 w-4" />
@@ -43,7 +56,7 @@ export function MainShell({ children }: MainShellProps) {
           ))}
         </div>
       </motion.header>
-      <main className="mt-8 flex-1">{children}</main>
+      <main className="relative z-10 mt-8 flex-1">{children}</main>
     </div>
   );
 }

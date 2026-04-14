@@ -153,6 +153,59 @@
     radial-gradient(circle at 80% 35%, rgb(255 255 255 / 25%) 0px, transparent 30%);
 }
 
+.caustics-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.24;
+  background:
+    radial-gradient(ellipse at 22% 28%, rgb(255 255 255 / 42%) 0%, transparent 36%),
+    radial-gradient(ellipse at 72% 35%, rgb(205 243 255 / 38%) 0%, transparent 40%),
+    radial-gradient(ellipse at 48% 78%, rgb(255 255 255 / 30%) 0%, transparent 34%);
+  mix-blend-mode: screen;
+  animation: caustics-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes caustics-drift {
+  0% {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+    filter: blur(0.5px);
+  }
+  50% {
+    transform: translate3d(1.5%, 1.2%, 0) scale(1.02);
+    filter: blur(0.8px);
+  }
+  100% {
+    transform: translate3d(0.5%, -1.5%, 0) scale(1.01);
+    filter: blur(0.6px);
+  }
+}
+
+.glass-panel {
+  background: rgb(255 255 255 / 34%);
+  border: 1px solid rgb(255 255 255 / 45%);
+  box-shadow:
+    0 10px 30px rgb(22 101 143 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 55%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-pill {
+  background: rgb(255 255 255 / 30%);
+  border: 1px solid rgb(255 255 255 / 42%);
+  box-shadow: 0 8px 20px rgb(22 101 143 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+.glass-input {
+  background: rgb(255 255 255 / 40%);
+  border: 1px solid rgb(255 255 255 / 50%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%);
+  backdrop-filter: blur(10px);
+}
+
 .hero-metal,
 .schematic-card,
 .timeline-card,
@@ -161,9 +214,11 @@
 .contact-item,
 .steam-footer {
   background: rgb(255 255 255 / 54%);
-  border: 1px solid rgb(82 157 193 / 22%);
-  box-shadow: 0 10px 30px rgb(24 89 124 / 8%);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgb(255 255 255 / 45%);
+  box-shadow:
+    0 10px 30px rgb(24 89 124 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 55%);
+  backdrop-filter: blur(16px);
 }
 
 .hero-metal {
@@ -171,25 +226,39 @@
 }
 
 .brass-button {
-  border: 1px solid rgb(63 159 200 / 24%);
-  background: linear-gradient(120deg, #dff7ff 0%, #b8eaff 100%);
+  border: 1px solid rgb(255 255 255 / 55%);
+  background: linear-gradient(120deg, rgb(233 250 255 / 80%) 0%, rgb(201 239 255 / 72%) 100%);
   color: #0f425f;
-  box-shadow: 0 8px 18px rgb(32 108 146 / 14%);
+  box-shadow:
+    0 8px 18px rgb(32 108 146 / 10%),
+    inset 0 1px 0 rgb(255 255 255 / 65%);
+  transition: box-shadow 180ms ease, filter 180ms ease, transform 180ms ease;
 }
 
 .brass-button:hover {
   filter: brightness(1.04);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgb(167 226 255 / 58%),
+    0 0 20px rgb(106 203 255 / 36%),
+    0 10px 26px rgb(43 145 198 / 18%);
 }
 
 .brass-button-outline {
-  border: 1px solid rgb(63 159 200 / 34%);
-  background: rgb(255 255 255 / 35%);
+  border: 1px solid rgb(255 255 255 / 55%);
+  background: rgb(255 255 255 / 34%);
   color: #1f6e9b;
+  transition: box-shadow 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
 .brass-button-outline:hover {
-  background: rgb(255 255 255 / 60%);
+  background: rgb(255 255 255 / 50%);
   color: #15597f;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgb(167 226 255 / 52%),
+    0 0 18px rgb(106 203 255 / 32%),
+    0 10px 24px rgb(43 145 198 / 16%);
 }
 
 .thumbnail-frame {
@@ -197,7 +266,25 @@
   height: 152px;
   overflow: hidden;
   border-radius: 0.7rem;
-  border: 1px solid rgb(63 159 200 / 20%);
+  border: 1px solid rgb(255 255 255 / 55%);
+  box-shadow:
+    0 12px 34px rgb(30 124 174 / 14%),
+    inset 0 1px 0 rgb(255 255 255 / 65%);
+  backdrop-filter: blur(12px);
+}
+
+.schematic-card {
+  transform: translateY(0) scale(1);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.schematic-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgb(255 255 255 / 65%);
+  box-shadow:
+    0 18px 42px rgb(35 135 188 / 16%),
+    0 0 0 1px rgb(190 236 255 / 50%),
+    inset 0 1px 0 rgb(255 255 255 / 68%);
 }
 
 .thumbnail-grid {
