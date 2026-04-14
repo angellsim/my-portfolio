@@ -52,18 +52,18 @@ export function TimelineSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55 }}
-        className="rounded-2xl border border-copper/45 bg-black/20 p-6"
+        className="rounded-2xl border border-copper/25 bg-white/45 p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
-          Formacao e Trajetoria
+          Jornada
         </p>
         <h3 className="mt-2 font-heading text-3xl text-brass">
-          Timeline de Experiencia e Educacao
+          Experiencia e Formacao
         </h3>
       </motion.div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-brass/30 bg-black/15 p-5">
+        <div className="rounded-2xl border border-copper/20 bg-white/45 p-5">
           <h4 className="font-heading text-2xl text-brass">Experiencia</h4>
           <ol className="timeline-rail mt-4 space-y-4">
             {experience.map((item, index) => (
@@ -79,7 +79,7 @@ export function TimelineSection() {
                   <item.icon className="mt-0.5 h-4 w-4 text-copper" />
                   <div>
                     <p className="font-heading text-xl text-foreground">{item.title}</p>
-                    <p className="font-mono text-xs uppercase tracking-wide text-brass/80">
+                    <p className="font-mono text-xs uppercase tracking-wide text-copper/80">
                       {item.organization}
                     </p>
                     <p className="mt-2 text-sm text-foreground/85">{item.summary}</p>
@@ -90,7 +90,7 @@ export function TimelineSection() {
           </ol>
         </div>
 
-        <div className="rounded-2xl border border-brass/30 bg-black/15 p-5">
+        <div className="rounded-2xl border border-copper/20 bg-white/45 p-5">
           <h4 className="font-heading text-2xl text-brass">Educacao</h4>
           <ol className="timeline-rail mt-4 space-y-4">
             {education.map((item) => (
@@ -106,7 +106,7 @@ export function TimelineSection() {
                   <item.icon className="mt-0.5 h-4 w-4 text-copper" />
                   <div>
                     <p className="font-heading text-xl text-foreground">{item.title}</p>
-                    <p className="font-mono text-xs uppercase tracking-wide text-brass/80">
+                    <p className="font-mono text-xs uppercase tracking-wide text-copper/80">
                       {item.organization}
                     </p>
                     <p className="mt-2 text-sm text-foreground/85">{item.summary}</p>
@@ -133,7 +133,7 @@ export function TimelineSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55, delay: 0.08 }}
-        className="rounded-2xl border border-copper/40 bg-gradient-to-r from-copper/18 via-transparent to-brass/12 p-6"
+        className="rounded-2xl border border-copper/25 bg-gradient-to-r from-white/60 via-white/40 to-transparent p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
           Certificados

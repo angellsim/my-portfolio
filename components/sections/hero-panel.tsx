@@ -47,7 +47,7 @@ export function HeroPanel() {
 
       <div className="relative z-10">
         <p className="font-mono text-sm uppercase tracking-[0.3em] text-copper/90">
-          Oficina Principal
+          Presenca Digital
         </p>
         <h2 className="mt-4 font-heading text-4xl text-foreground md:text-6xl">
           Alice Wolf Fernandes

@@ -42,16 +42,16 @@ export function ProjectsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.55 }}
-        className="rounded-2xl border border-copper/45 bg-black/20 p-6"
+        className="rounded-2xl border border-copper/25 bg-white/45 p-6"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
-              Secao Projetos
+              Portfolio Vivo
             </p>
-            <h3 className="mt-2 font-heading text-3xl text-brass">Projetos</h3>
+            <h3 className="mt-2 font-heading text-3xl text-brass">Projetos em Foco</h3>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-brass/40 bg-brass/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-brass">
+          <span className="inline-flex items-center gap-2 rounded-full border border-copper/25 bg-white/60 px-3 py-1 font-mono text-xs uppercase tracking-wide text-copper">
             <FolderGit2 className="h-3.5 w-3.5" />
             Dados simulados do GitHub
           </span>
@@ -63,13 +63,13 @@ export function ProjectsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.6, delay: 0.08 }}
-        className="rounded-2xl border border-brass/40 bg-gradient-to-r from-copper/20 via-transparent to-brass/10 p-5"
+        className="rounded-2xl border border-copper/25 bg-gradient-to-r from-white/55 via-white/40 to-transparent p-5"
       >
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-copper/95">
           Destaque Atual
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <BriefcaseBusiness className="h-5 w-5 text-brass" />
+          <BriefcaseBusiness className="h-5 w-5 text-copper" />
           <p className="font-heading text-xl text-foreground">
             Estagio em desenvolvimento - 2 meses de experiencia pratica
           </p>

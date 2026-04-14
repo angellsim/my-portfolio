@@ -29,7 +29,7 @@ const certificateData: Certificate[] = [
 
 const filters: Array<Certificate["track"]> = ["Python", "Java", "FullStack JS"];
 
-function createSteamReply(text: string) {
+function createLabReply(text: string) {
   const lower = text.toLowerCase();
   if (lower.includes("prompt")) {
     return "Modo Engenharia de Prompt: defino contexto, persona, restricoes e formato de saida para respostas mais consistentes.";
@@ -40,7 +40,7 @@ function createSteamReply(text: string) {
   if (lower.includes("portfolio")) {
     return "Sugestao para portfolio: destaque problema real, stack, impacto medido e aprendizados tecnicos.";
   }
-  return "Analise steampunk concluida. Posso explicar arquitetura, modelagem de dados ou estrategia de prompts para este tema.";
+  return "Analise concluida. Posso explicar arquitetura, modelagem de dados ou estrategia de prompts para este tema.";
 }
 
 export function LaboratorySection() {
@@ -50,7 +50,7 @@ export function LaboratorySection() {
     {
       role: "assistant",
       content:
-        "Sou a IA Steampunk da oficina. Pergunte sobre IA, prompts, automacoes ou arquitetura de projetos.",
+        "Sou sua IA de Laboratorio. Pergunte sobre IA, prompts, automacoes ou arquitetura de projetos.",
     },
   ]);
 
@@ -73,7 +73,7 @@ export function LaboratorySection() {
     if (!prompt.trim()) return;
 
     const userContent = prompt.trim();
-    const reply = createSteamReply(userContent);
+    const reply = createLabReply(userContent);
     setMessages((prev) => [
       ...prev,
       { role: "user", content: userContent },
@@ -88,13 +88,13 @@ export function LaboratorySection() {
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
-        className="rounded-2xl border border-copper/45 bg-black/20 p-6"
+        className="rounded-2xl border border-copper/25 bg-white/45 p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
-          Laboratorio
+          Exploracao IA
         </p>
         <h3 className="mt-2 font-heading text-3xl text-brass md:text-4xl">
-          Projetos Experimentais de IA e Engenharia de Prompt
+          Laboratorio de IA e Engenharia de Prompt
         </h3>
       </motion.div>
 
@@ -104,11 +104,11 @@ export function LaboratorySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="rounded-2xl border border-brass/35 bg-black/15 p-5"
+          className="rounded-2xl border border-copper/20 bg-white/45 p-5"
         >
           <div className="flex items-center gap-2">
             <Bot className="h-5 w-5 text-copper" />
-            <h4 className="font-heading text-2xl text-brass">IA Steampunk Interativa</h4>
+            <h4 className="font-heading text-2xl text-brass">IA Interativa</h4>
           </div>
           <p className="mt-2 text-sm text-foreground/85">
             Simulador local com respostas orientadas a IA aplicada, engenharia de
@@ -133,7 +133,7 @@ export function LaboratorySection() {
               value={prompt}
               onChange={(event) => setPrompt(event.target.value)}
               placeholder="Pergunte algo sobre IA, dados ou prompts..."
-              className="h-11 flex-1 rounded-lg border border-copper/35 bg-coal/70 px-3 font-mono text-sm text-foreground placeholder:text-foreground/45"
+              className="h-11 flex-1 rounded-lg border border-copper/25 bg-white/70 px-3 font-mono text-sm text-foreground placeholder:text-foreground/45"
             />
             <button type="submit" className="brass-button h-11 rounded-lg px-4 text-sm">
               Gerar resposta
@@ -146,7 +146,7 @@ export function LaboratorySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.52, delay: 0.06 }}
-          className="rounded-2xl border border-brass/35 bg-black/15 p-5"
+          className="rounded-2xl border border-copper/20 bg-white/45 p-5"
         >
           <div className="flex items-center gap-2">
             <FlaskConical className="h-5 w-5 text-copper" />
@@ -190,7 +190,7 @@ export function LaboratorySection() {
             ))}
           </div>
 
-          <div className="mt-4 inline-flex items-center gap-2 rounded-md border border-brass/35 bg-coal/60 px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-brass">
+          <div className="mt-4 inline-flex items-center gap-2 rounded-md border border-copper/25 bg-white/70 px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-copper">
             <Sparkles className="h-3.5 w-3.5" />
             Filtros combinaveis em tempo real
           </div>

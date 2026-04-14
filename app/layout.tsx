@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -15,8 +15,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Steampunk Moderno",
-  description: "Base visual steampunk moderno para portfólio em Next.js",
+  title: "Alice Wolf Fernandes | Portfolio",
+  description: "Portfolio com visual etereo, claro e contemporaneo",
 };
 
 export default function RootLayout({
@@ -27,9 +27,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${jetBrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body className="noise-bg min-h-full flex flex-col">{children}</body>
+      <body className="sky-bg min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

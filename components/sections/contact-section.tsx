@@ -20,13 +20,13 @@ export function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.5 }}
-        className="rounded-2xl border border-brass/35 bg-black/20 p-6 md:p-8"
+        className="rounded-2xl border border-copper/25 bg-white/45 p-6 md:p-8"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
           Contato
         </p>
         <h3 className="mt-2 font-heading text-3xl text-brass md:text-4xl">
-          Vamos construir algo memoravel
+          Vamos construir algo relevante
         </h3>
         <p className="mt-3 max-w-2xl text-foreground/90">
           Estou disponivel para estagio, freelas e colaboracoes em produtos
@@ -66,7 +66,7 @@ export function ContactSection() {
           <a href={contact.resumePath} download className="inline-flex">
             <Button className="brass-button gap-2">
               <ScrollText className="h-4 w-4" />
-              Baixar CV no Dossie de Bronze
+              Baixar Curriculo
             </Button>
           </a>
           <p className="mt-2 text-xs text-foreground/70">
@@ -81,8 +81,8 @@ export function ContactSection() {
           <span className="steam-puff steam-puff-2" />
           <span className="steam-puff steam-puff-3" />
         </div>
-        <p className="relative z-10 text-center font-mono text-xs uppercase tracking-[0.2em] text-brass/85">
-          Sistema em pressao estavel - Portfolio Alice Wolf Fernandes
+        <p className="relative z-10 text-center font-mono text-xs uppercase tracking-[0.2em] text-copper/85">
+          Portfolio Alice Wolf Fernandes
         </p>
       </footer>
     </section>
