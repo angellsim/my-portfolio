@@ -1,39 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, BookOpenText, BriefcaseBusiness, GraduationCap } from "lucide-react";
+import {
+  Award,
+  BarChart3,
+  BookOpenText,
+  BriefcaseBusiness,
+  GraduationCap,
+  Headphones,
+  Heart,
+  Palette,
+  Shield,
+  Sparkles,
+} from "lucide-react";
 
-type TimelineItem = {
+type Highlight = {
+  label: string;
+  Icon: React.ComponentType<{ className?: string }>;
+};
+
+type ExperienceBlock = {
   title: string;
   organization: string;
   summary: string;
-  icon: React.ComponentType<{ className?: string }>;
+  Icon: React.ComponentType<{ className?: string }>;
+  highlights?: Highlight[];
 };
 
-const experience: TimelineItem[] = [
+const experience: ExperienceBlock[] = [
+  {
+    title: "Estágio em desenvolvimento",
+    organization: "2 meses · atual",
+    summary:
+      "Atuo no desenvolvimento de sistemas FullStack JS, unindo prototipagem agil de interfaces a otimizacao de fluxos de dados. Aplico Engenharia de Prompt para integrar LLMs de forma eficiente, transformando requisitos tecnicos em solucoes centradas no usuario.",
+    Icon: Sparkles,
+    highlights: [
+      { Icon: BriefcaseBusiness, label: "FullStack JS" },
+      { Icon: Sparkles, label: "Prompt Engineering" },
+    ],
+  },
   {
     title: "Customer Service",
     organization: "Drogasil",
     summary:
-      "Atendimento com foco em resiliência, empatia e resolucao pratica de problemas.",
-    icon: BriefcaseBusiness,
+      "Linha de frente com escuta ativa: manter calma e clareza em alto volume exige resiliência emocional e empatia genuína.",
+    Icon: Headphones,
+    highlights: [
+      { Icon: Shield, label: "Resiliência" },
+      { Icon: Heart, label: "Empatia" },
+    ],
   },
   {
-    title: "Marketing Digital",
+    title: "Marketing digital",
     organization: "Cristel",
     summary:
-      "Atuacao conectando design e dados para melhorar comunicacao, alcance e conversao.",
-    icon: BookOpenText,
+      "Estratégias onde design conversa com dados: narrativa, mensuração e ajustes para fortalecer presença, alcance e conversão.",
+    Icon: Palette,
+    highlights: [
+      { Icon: Palette, label: "Design" },
+      { Icon: BarChart3, label: "Dados" },
+    ],
   },
 ];
 
-const education: TimelineItem[] = [
+const education = [
   {
-    title: "PUC Goias",
-    organization: "ADS e Ciencia de Dados/IA",
+    title: "PUC Goiás",
+    organization: "ADS · Ciência de Dados / IA",
     summary:
-      "Formacao tecnica em desenvolvimento de software, dados e fundamentos de inteligencia artificial.",
-    icon: GraduationCap,
+      "Base sólida em desenvolvimento, estatística e fundamentos de IA — com disciplinas que exigem rigor lógico e visão de produto.",
+    Icon: GraduationCap,
   },
 ];
 
@@ -41,7 +77,7 @@ const certificates = [
   "Python",
   "Java",
   "RocketSeat",
-  "Engenharia de Prompt - Asimov",
+  "Engenharia de Prompt — Asimov",
 ];
 
 export function TimelineSection() {
@@ -54,77 +90,90 @@ export function TimelineSection() {
         transition={{ duration: 0.55 }}
         className="glass-panel rounded-2xl p-6"
       >
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
-          Jornada
-        </p>
-        <h3 className="mt-2 font-heading text-3xl text-brass">
-          Experiencia e Formacao
-        </h3>
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">Jornada</p>
+        <h3 className="mt-2 font-heading text-3xl text-brass">Experiência e formação</h3>
       </motion.div>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="glass-panel rounded-2xl p-5">
-          <h4 className="font-heading text-2xl text-brass">Experiencia</h4>
-          <ol className="timeline-rail mt-4 space-y-4">
+          <h4 className="font-heading text-2xl text-brass">Experiência</h4>
+          <div className="timeline-rail mt-5 space-y-4">
             {experience.map((item, index) => (
-              <motion.li
-                key={item.organization}
-                initial={{ opacity: 0, x: -18 }}
+              <motion.article
+                key={`${item.organization}-${item.title}`}
+                initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="timeline-card"
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className="timeline-card relative"
               >
-                <div className="flex items-start gap-3">
-                  <item.icon className="mt-0.5 h-4 w-4 text-copper" />
-                  <div>
-                    <p className="font-heading text-xl text-foreground">{item.title}</p>
-                    <p className="font-mono text-xs uppercase tracking-wide text-copper/80">
+                <div className="flex gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/50 text-copper shadow-sm backdrop-blur-sm">
+                    <item.Icon className="h-[18px] w-[18px]" aria-hidden />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-heading text-lg leading-snug text-foreground">{item.title}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-copper/85">
                       {item.organization}
                     </p>
-                    <p className="mt-2 text-sm text-foreground/85">{item.summary}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/85">{item.summary}</p>
+                    {item.highlights?.length ? (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {item.highlights.map(({ Icon, label }) => (
+                          <span
+                            key={label}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-white/50 bg-white/35 px-2.5 py-1 text-[11px] font-medium text-copper backdrop-blur-sm"
+                          >
+                            <Icon className="h-3 w-3 opacity-90" aria-hidden />
+                            {label}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
-              </motion.li>
+              </motion.article>
             ))}
-          </ol>
+          </div>
         </div>
 
         <div className="glass-panel rounded-2xl p-5">
-          <h4 className="font-heading text-2xl text-brass">Educacao</h4>
-          <ol className="timeline-rail mt-4 space-y-4">
+          <h4 className="font-heading text-2xl text-brass">Formação</h4>
+          <div className="timeline-rail mt-5 space-y-4">
             {education.map((item) => (
-              <motion.li
+              <motion.article
                 key={item.organization}
-                initial={{ opacity: 0, x: 18 }}
+                initial={{ opacity: 0, x: 12 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.35 }}
                 transition={{ duration: 0.45 }}
-                className="timeline-card"
+                className="timeline-card relative"
               >
-                <div className="flex items-start gap-3">
-                  <item.icon className="mt-0.5 h-4 w-4 text-copper" />
-                  <div>
-                    <p className="font-heading text-xl text-foreground">{item.title}</p>
-                    <p className="font-mono text-xs uppercase tracking-wide text-copper/80">
+                <div className="flex gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/50 text-copper shadow-sm backdrop-blur-sm">
+                    <item.Icon className="h-[18px] w-[18px]" aria-hidden />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-heading text-lg leading-snug text-foreground">{item.title}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-copper/85">
                       {item.organization}
                     </p>
-                    <p className="mt-2 text-sm text-foreground/85">{item.summary}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/85">{item.summary}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       <span className="mech-seal">
                         <Award className="h-3.5 w-3.5" />
-                        Excelencia em Algoritmos
+                        Excelência em Algoritmos
                       </span>
                       <span className="mech-seal">
                         <Award className="h-3.5 w-3.5" />
-                        Excelencia em Bancos de Dados
+                        Excelência em Bancos de Dados
                       </span>
                     </div>
                   </div>
                 </div>
-              </motion.li>
+              </motion.article>
             ))}
-          </ol>
+          </div>
         </div>
       </div>
 
@@ -135,9 +184,7 @@ export function TimelineSection() {
         transition={{ duration: 0.55, delay: 0.08 }}
         className="glass-panel rounded-2xl p-6"
       >
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
-          Certificados
-        </p>
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">Certificados</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {certificates.map((cert) => (
             <span

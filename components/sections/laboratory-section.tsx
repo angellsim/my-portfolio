@@ -50,7 +50,7 @@ export function LaboratorySection() {
     {
       role: "assistant",
       content:
-        "Sou sua IA de Laboratorio. Pergunte sobre IA, prompts, automacoes ou arquitetura de projetos.",
+        "Sou sua IA de laboratório. Pergunte sobre IA, prompts, automações ou arquitetura de projetos.",
     },
   ]);
 
@@ -91,11 +91,16 @@ export function LaboratorySection() {
         className="glass-panel rounded-2xl p-6"
       >
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">
-          Exploracao IA
+          Exploração IA
         </p>
         <h3 className="mt-2 font-heading text-3xl text-brass md:text-4xl">
-          Laboratorio de IA e Engenharia de Prompt
+          Laboratório de IA e Engenharia de Prompt
         </h3>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
+          Engenharia de prompt expande o que o modelo consegue usar com clareza: defino contexto,
+          restrições e formato de saída para focar no essencial — ordem no meio de um horizonte enorme
+          de respostas possíveis.
+        </p>
       </motion.div>
 
       <div className="grid gap-6 xl:grid-cols-[1.35fr_1fr]">

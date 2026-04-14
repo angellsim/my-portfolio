@@ -15,9 +15,18 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alice Wolf Fernandes | Portfolio",
-  description: "Portfolio com visual etereo, claro e contemporaneo",
+  title: "Alice Wolf Fernandes | Data Science & FullStack Developer",
+  description: "Estudante de ADS na PUC Goiás, especialista em Ciência de Dados, IA e Engenharia de Prompt. Conheça meu portfólio de soluções FullStack.",
+  keywords: ["Data Science", "Inteligência Artificial", "FullStack", "Next.js", "Engenharia de Prompt", "PUC Goiás", "Alice Wolf"],
+  authors: [{ name: "Alice Wolf Fernandes" }],
+  openGraph: {
+    title: "Alice Wolf Fernandes | Data Science & FullStack Developer",
+    description: "Portfólio profissional de Alice Wolf Fernandes, especialista em Ciência de Dados e Engenharia de Prompt.",
+    type: "website",
+  },
 };
+
+import { Footer } from "@/components/layout/footer";
 
 export default function RootLayout({
   children,
@@ -26,10 +35,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={`${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body className="sky-bg min-h-full flex flex-col">{children}</body>
+      <body className="sky-bg min-h-full flex flex-col">
+        <main className="flex-grow">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

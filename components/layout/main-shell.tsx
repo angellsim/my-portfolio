@@ -14,11 +14,14 @@ const items = [
   { icon: Zap, label: "Fluxo", value: "Constante" },
 ];
 
+import { SixEyesBackground } from "@/components/effects/six-eyes-background";
+
 export function MainShell({ children }: MainShellProps) {
   const [causticsEnabled, setCausticsEnabled] = useState(true);
 
   return (
     <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-10 md:px-10">
+      <SixEyesBackground />
       {causticsEnabled ? <div aria-hidden="true" className="caustics-layer" /> : null}
       <motion.header
         initial={{ opacity: 0, y: -18 }}
@@ -38,9 +41,9 @@ export function MainShell({ children }: MainShellProps) {
             Caustics: {causticsEnabled ? "On" : "Off"}
           </button>
         </div>
-        <h1 className="mt-3 font-heading text-4xl tracking-wide text-brass md:text-5xl">
+        <h2 className="mt-3 font-heading text-4xl tracking-wide text-brass md:text-5xl">
           Horizonte Criativo
-        </h1>
+        </h2>
         <div className="mt-6 grid gap-3 md:grid-cols-3">
           {items.map(({ icon: Icon, label, value }) => (
             <div

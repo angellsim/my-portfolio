@@ -9,7 +9,7 @@ export function HeroPanel() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15, duration: 0.6 }}
-      className="hero-metal relative overflow-hidden rounded-2xl border border-brass/40 p-8 md:p-10"
+      className="hero-metal glass-panel relative overflow-hidden rounded-2xl p-8 md:p-10"
     >
       <svg
         aria-hidden="true"
@@ -47,19 +47,24 @@ export function HeroPanel() {
 
       <div className="relative z-10">
         <p className="font-mono text-sm uppercase tracking-[0.3em] text-copper/90">
-          Presenca Digital
+          Presença digital
         </p>
-        <h2 className="mt-4 font-heading text-4xl text-foreground md:text-6xl">
-          Alice Wolf Fernandes
-        </h2>
-        <p className="mt-3 font-mono text-sm uppercase tracking-[0.25em] text-brass">
-          FullStack Developer
-        </p>
-        <p className="mt-6 max-w-2xl text-base leading-relaxed text-foreground/90 md:text-lg">
-          Estudante de Analise e Desenvolvimento de Sistemas e Ciencia de
-          Dados/IA na PUC Goias, combinando engenharia de software com
-          pensamento visual para criar experiencias digitais funcionais e
-          expressivas.
+        <h1 className="mt-4 font-heading text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl">
+          <span className="block sm:inline">Alice Wolf Fernandes</span>
+          <span className="mt-2 block text-copper/70 sm:mt-0 sm:inline sm:px-2 md:px-3">
+            <span aria-hidden="true" className="hidden sm:inline">
+              |
+            </span>
+            <span className="block sm:inline sm:font-semibold">FullStack Developer</span>
+          </span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-base font-medium leading-relaxed text-foreground/95 md:text-lg">
+          Estudante de{" "}
+          <span className="text-brass">Análise e Desenvolvimento de Sistemas</span> e de{" "}
+          <span className="text-brass">Ciência de Dados / IA</span> na{" "}
+          <span className="font-semibold text-foreground">PUC Goiás</span>
+          . Conecto engenharia de software, dados e olhar de designer para experiências digitais
+          claras e funcionais.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button className="brass-button">Ver Projetos</Button>

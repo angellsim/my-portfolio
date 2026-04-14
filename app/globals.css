@@ -165,20 +165,18 @@
     radial-gradient(ellipse at 48% 78%, rgb(255 255 255 / 30%) 0%, transparent 34%);
   mix-blend-mode: screen;
   animation: caustics-drift 12s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 @keyframes caustics-drift {
   0% {
     transform: translate3d(-1.5%, -1%, 0) scale(1);
-    filter: blur(0.5px);
   }
   50% {
     transform: translate3d(1.5%, 1.2%, 0) scale(1.02);
-    filter: blur(0.8px);
   }
   100% {
     transform: translate3d(0.5%, -1.5%, 0) scale(1.01);
-    filter: blur(0.6px);
   }
 }
 
@@ -280,10 +278,11 @@
 
 .schematic-card:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: rgb(255 255 255 / 65%);
+  border-color: #b3e5fc;
   box-shadow:
+    0 0 15px rgba(179, 229, 252, 0.4),
     0 18px 42px rgb(35 135 188 / 16%),
-    0 0 0 1px rgb(190 236 255 / 50%),
+    0 0 0 1px #b3e5fc,
     inset 0 1px 0 rgb(255 255 255 / 68%);
 }
 

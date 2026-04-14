@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 const contact = {
   email: "alicewolf.dev@gmail.com",
   phone: "+55 (62) 99999-9999",
-  github: "https://github.com/alicewolf",
+  github: "https://github.com/angellsim",
   linkedin: "https://linkedin.com/in/alicewolf",
   resumePath: "/curriculo-alice-wolf-fernandes.pdf",
 };
 
 export function ContactSection() {
   return (
-    <section className="mt-8">
+    <section className="mt-8 mb-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -69,22 +69,8 @@ export function ContactSection() {
               Baixar Curriculo
             </Button>
           </a>
-          <p className="mt-2 text-xs text-foreground/70">
-            Coloque seu PDF em `public/curriculo-alice-wolf-fernandes.pdf`.
-          </p>
         </div>
       </motion.div>
-
-      <footer className="steam-footer glass-panel mt-8 rounded-2xl p-5">
-        <div className="steam-layer" aria-hidden="true">
-          <span className="steam-puff steam-puff-1" />
-          <span className="steam-puff steam-puff-2" />
-          <span className="steam-puff steam-puff-3" />
-        </div>
-        <p className="relative z-10 text-center font-mono text-xs uppercase tracking-[0.2em] text-copper/85">
-          Portfolio Alice Wolf Fernandes
-        </p>
-      </footer>
     </section>
   );
 }

@@ -12,24 +12,24 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "steam-dashboard",
+    name: "Engenharia de Prompt (Asimov)",
     description:
-      "Painel de monitoramento para oficina digital, com visual steampunk e foco em performance.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+      "Desenvolvimento de pipelines e tecnicas avancadas de interacao com LLMs, focando em precisao e automacao de fluxos.",
+    tech: ["Python", "OpenAI", "Prompt Engineering", "Vectara"],
     view: "blueprint",
   },
   {
-    name: "atelier-ux-lab",
+    name: "Estágio em Desenvolvimento",
     description:
-      "Laboratorio de interfaces para prototipos com narrativa visual e interacoes cinematograficas.",
-    tech: ["React", "Figma API", "Node.js", "PostgreSQL"],
+      "Exploracao de arquiteturas FullStack JS e Engenharia de Dados em ambiente corporativo real.",
+    tech: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
     view: "vintage",
   },
   {
-    name: "copper-analytics",
+    name: "Atelier UX Lab",
     description:
-      "App para exploracao de dados com foco em insights de produto e visualizacoes tecnicas.",
-    tech: ["Python", "FastAPI", "Pandas", "Docker"],
+      "Laboratorio de interfaces para prototipos com narrativa visual e interacoes cinematograficas.",
+    tech: ["React", "Figma API", "Creative Coding"],
     view: "blueprint",
   },
 ];
@@ -66,13 +66,20 @@ export function ProjectsSection() {
         className="glass-panel rounded-2xl p-5"
       >
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-copper/95">
-          Destaque Atual
+          Destaque atual
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-3">
-          <BriefcaseBusiness className="h-5 w-5 text-copper" />
-          <p className="font-heading text-xl text-foreground">
-            Estagio em desenvolvimento - 2 meses de experiencia pratica
-          </p>
+        <div className="mt-3 flex flex-wrap items-start gap-3">
+          <BriefcaseBusiness className="mt-0.5 h-5 w-5 shrink-0 text-copper" aria-hidden />
+          <div>
+            <p className="font-heading text-lg text-foreground sm:text-xl">
+              Estágio em desenvolvimento · 2 meses
+            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground/85">
+              Experiência em ritmo de laboratório: exploro stacks e fluxos reais, prototipo com
+              agilidade e fecho ciclos curtos de aprendizado — inovação com os pés no código e
+              evolução contínua a cada sprint.
+            </p>
+          </div>
         </div>
       </motion.aside>
 
