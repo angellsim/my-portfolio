@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Cog, Gauge, Zap } from "lucide-react";
+import { Eye, Cloud, Sparkles } from "lucide-react";
 
 type MainShellProps = {
   children: React.ReactNode;
 };
 
 const items = [
-  { icon: Cog, label: "Sistema", value: "Sincronizado" },
-  { icon: Gauge, label: "Ritmo", value: "Fluido" },
-  { icon: Zap, label: "Fluxo", value: "Constante" },
+  { icon: Eye, label: "Percepção", value: "Sincronia" },
+  { icon: Cloud, label: "Vácuo", value: "Fluidez" },
+  { icon: Sparkles, label: "Infinito", value: "Expansão" },
 ];
 
 import { SixEyesBackground } from "@/components/effects/six-eyes-background";
@@ -23,43 +23,19 @@ export function MainShell({ children }: MainShellProps) {
     <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 py-10 md:px-10">
       <SixEyesBackground />
       {causticsEnabled ? <div aria-hidden="true" className="caustics-layer" /> : null}
-      <motion.header
-        initial={{ opacity: 0, y: -18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55 }}
-        className="glass-panel relative z-10 rounded-2xl p-6"
-      >
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="font-mono text-xs uppercase tracking-[0.35em] text-copper/90">
-            Visao Geral
-          </p>
-          <button
-            type="button"
-            onClick={() => setCausticsEnabled((prev) => !prev)}
-            className="glass-pill rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-copper transition hover:text-foreground"
-          >
-            Caustics: {causticsEnabled ? "On" : "Off"}
-          </button>
-        </div>
-        <h2 className="mt-3 font-heading text-4xl tracking-wide text-brass md:text-5xl">
-          Horizonte Criativo
-        </h2>
-        <div className="mt-6 grid gap-3 md:grid-cols-3">
-          {items.map(({ icon: Icon, label, value }) => (
-            <div
-              key={label}
-              className="glass-panel rounded-xl p-3 text-sm"
-            >
-              <div className="flex items-center gap-2 font-mono uppercase tracking-wide text-copper/85">
-                <Icon className="h-4 w-4" />
-                {label}
-              </div>
-              <p className="mt-1 font-heading text-lg text-foreground">{value}</p>
-            </div>
-          ))}
-        </div>
-      </motion.header>
-      <main className="relative z-10 mt-8 flex-1">{children}</main>
+      
+      <main className="relative z-10 flex-1">{children}</main>
+
+      <div className="fixed top-8 right-8 z-50">
+        <button
+          type="button"
+          onClick={() => setCausticsEnabled((prev) => !prev)}
+          className="glass-pill rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-sky-600 transition hover:text-sky-800 bg-white/40 backdrop-blur-md border border-white/60"
+        >
+          Aura: {causticsEnabled ? "Ativa" : "Oculta"}
+        </button>
+      </div>
     </div>
   );
 }
+

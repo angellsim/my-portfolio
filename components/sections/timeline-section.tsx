@@ -30,13 +30,14 @@ type ExperienceBlock = {
 const experience: ExperienceBlock[] = [
   {
     title: "Estágio em desenvolvimento",
-    organization: "2 meses · atual",
+    organization: "3 meses · atual",
     summary:
       "Atuo no desenvolvimento de sistemas FullStack JS, unindo prototipagem agil de interfaces a otimizacao de fluxos de dados. Aplico Engenharia de Prompt para integrar LLMs de forma eficiente, transformando requisitos tecnicos em solucoes centradas no usuario.",
     Icon: Sparkles,
     highlights: [
       { Icon: BriefcaseBusiness, label: "FullStack JS" },
       { Icon: Sparkles, label: "Prompt Engineering" },
+      { Icon: Sparkles, label: "Database" },
     ],
   },
   {
@@ -71,13 +72,6 @@ const education = [
       "Base sólida em desenvolvimento, estatística e fundamentos de IA — com disciplinas que exigem rigor lógico e visão de produto.",
     Icon: GraduationCap,
   },
-];
-
-const certificates = [
-  "Python",
-  "Java",
-  "RocketSeat",
-  "Engenharia de Prompt — Asimov",
 ];
 
 export function TimelineSection() {
@@ -176,26 +170,6 @@ export function TimelineSection() {
           </div>
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.35 }}
-        transition={{ duration: 0.55, delay: 0.08 }}
-        className="glass-panel rounded-2xl p-6"
-      >
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-copper">Certificados</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {certificates.map((cert) => (
-            <span
-              key={cert}
-              className="glass-pill inline-flex items-center rounded-md px-3 py-1.5 font-mono text-xs uppercase tracking-wide text-brass"
-            >
-              {cert}
-            </span>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }

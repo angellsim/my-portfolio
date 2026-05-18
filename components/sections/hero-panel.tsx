@@ -68,7 +68,11 @@ export function HeroPanel() {
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button className="brass-button">Ver Projetos</Button>
-          <Button variant="outline" className="brass-button-outline">
+          <Button
+            variant="outline"
+            className="brass-button-outline"
+            onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })}
+          >
             Contato
           </Button>
         </div>

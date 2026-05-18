@@ -5,8 +5,8 @@ import { FolderGit2, Mail, Network, Phone, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const contact = {
-  email: "alicewolf.dev@gmail.com",
-  phone: "+55 (62) 99999-9999",
+  email: "alicewolffernandes@gmail.com",
+  phone: "+55 (62) 99823-3710",
   github: "https://github.com/angellsim",
   linkedin: "https://linkedin.com/in/alicewolf",
   resumePath: "/curriculo-alice-wolf-fernandes.pdf",
@@ -14,7 +14,7 @@ const contact = {
 
 export function ContactSection() {
   return (
-    <section className="mt-8 mb-12">
+    <section id="contato" className="mt-8 mb-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ export function ContactSection() {
           Vamos construir algo relevante
         </h3>
         <p className="mt-3 max-w-2xl text-foreground/90">
-          Estou disponivel para estagio, freelas e colaboracoes em produtos
+          Estou disponivel para estagio, freelances e colaborações em produtos
           digitais que unem codigo, design e dados.
         </p>
 
@@ -59,15 +59,6 @@ export function ContactSection() {
           >
             <Network className="h-4 w-4 text-copper" />
             <span className="font-mono text-sm">LinkedIn</span>
-          </a>
-        </div>
-
-        <div className="mt-6">
-          <a href={contact.resumePath} download className="inline-flex">
-            <Button className="brass-button gap-2">
-              <ScrollText className="h-4 w-4" />
-              Baixar Curriculo
-            </Button>
           </a>
         </div>
       </motion.div>

@@ -6,13 +6,11 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 export function SixEyesBackground() {
   const [mounted, setMounted] = useState(false);
   
-  // Mouse tracking for the Iris effect
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 : 0);
+  const mouseY = useMotionValue(typeof window !== "undefined" ? window.innerHeight / 2 : 0);
 
-  // Smooth out the mouse movement
-  const smoothX = useSpring(mouseX, { damping: 50, stiffness: 400 });
-  const smoothY = useSpring(mouseY, { damping: 50, stiffness: 400 });
+  const smoothX = useSpring(mouseX, { damping: 40, stiffness: 300 });
+  const smoothY = useSpring(mouseY, { damping: 40, stiffness: 300 });
 
   useEffect(() => {
     setMounted(true);
@@ -28,79 +26,79 @@ export function SixEyesBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Iris Effect: Radial gradient following mouse */}
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#eefaff]">
+      {/* Crystalline Sky Base */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,#ffffff_0%,#e0f2fe_100%)] opacity-80" />
+
+      {/* Circular Iris (Restored) */}
       <motion.div
-        className="absolute w-[1200px] h-[1200px] bg-[radial-gradient(circle,rgba(224,247,250,0.18)_0%,transparent_70%)] rounded-full blur-[20px]"
+        className="absolute w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(56,189,248,0.12)_0%,transparent_70%)] blur-[40px]"
         style={{
           x: smoothX,
           y: smoothY,
           translateX: "-50%",
           translateY: "-50%",
-          left: 0,
-          top: 0,
-          willChange: "transform",
         }}
       />
 
-      {/* Floating Ethereal Particles */}
-      {[...Array(15)].map((_, i) => (
-        <Particle key={i} />
+      <motion.div
+        className="absolute w-[450px] h-[450px] border border-sky-400/20 rounded-full"
+        style={{
+          x: smoothX,
+          y: smoothY,
+          translateX: "-50%",
+          translateY: "-50%",
+          background: "conic-gradient(from 0deg at 50% 50%, transparent, rgba(56,189,248,0.08), transparent)",
+        }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Triangular Shards (Crystalline depth) */}
+      {[...Array(10)].map((_, i) => (
+        <Shard key={i} index={i} smoothX={smoothX} smoothY={smoothY} />
       ))}
-      
-      {/* Subtle Depth Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-white/10" />
+
+      {/* Specular Aura Overlay */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-overlay">
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400 via-transparent to-white" />
+      </div>
     </div>
   );
 }
 
-function Particle() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-
-  const randomX = Math.random() * 100;
-  const randomDelay = Math.random() * 5;
-  const randomDuration = 15 + Math.random() * 20;
-  const randomSize = 2 + Math.random() * 3;
-
+function Shard({ index, smoothX, smoothY }: { index: number, smoothX: any, smoothY: any }) {
+  const angle = (index * 36) * (Math.PI / 180);
+  const distance = 180 + index * 45;
+  
   return (
     <motion.div
-      className="absolute bg-white rounded-full"
+      className="absolute bg-white/25 backdrop-blur-[1px]"
       style={{
-        width: randomSize,
-        height: randomSize,
-        left: `${randomX}%`,
-        top: "-10%",
-        opacity: 0,
-        filter: "blur(1px)",
-        willChange: "transform, opacity",
+        width: 30 + (index % 4) * 15,
+        height: 30 + (index % 4) * 15,
+        left: 0,
+        top: 0,
+        x: smoothX,
+        y: smoothY,
+        translateX: `calc(-50% + ${Math.cos(angle) * distance}px)`,
+        translateY: `calc(-50% + ${Math.sin(angle) * distance}px)`,
+        clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
+        rotate: index * 72,
       }}
       animate={{
-        y: ["0vh", "110vh"],
-        x: ["-15px", "15px", "-15px"],
-        opacity: [0, 0.5, 0.5, 0],
+        opacity: [0.1, 0.4, 0.1],
+        scale: [1, 1.15, 1],
+        rotate: [index * 72, index * 72 + 20, index * 72],
       }}
       transition={{
-        y: {
-          duration: randomDuration,
-          repeat: Infinity,
-          ease: "linear",
-          delay: randomDelay,
-        },
-        x: {
-          duration: 5 + Math.random() * 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        },
-        opacity: {
-          duration: randomDuration,
-          repeat: Infinity,
-          times: [0, 0.1, 0.9, 1],
-          delay: randomDelay,
-        }
+        duration: 6 + index,
+        repeat: Infinity,
+        ease: "easeInOut",
       }}
     />
   );
 }
+
+
+

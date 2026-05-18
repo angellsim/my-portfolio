@@ -158,11 +158,11 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.24;
+  opacity: 0.15;
   background:
-    radial-gradient(ellipse at 22% 28%, rgb(255 255 255 / 42%) 0%, transparent 36%),
-    radial-gradient(ellipse at 72% 35%, rgb(205 243 255 / 38%) 0%, transparent 40%),
-    radial-gradient(ellipse at 48% 78%, rgb(255 255 255 / 30%) 0%, transparent 34%);
+    radial-gradient(ellipse at 22% 28%, rgb(56 189 248 / 25%) 0%, transparent 36%),
+    radial-gradient(ellipse at 72% 35%, rgb(186 230 253 / 20%) 0%, transparent 40%),
+    radial-gradient(ellipse at 48% 78%, rgb(255 255 255 / 15%) 0%, transparent 34%);
   mix-blend-mode: screen;
   animation: caustics-drift 12s ease-in-out infinite alternate;
   will-change: transform;
@@ -170,48 +170,78 @@
 
 @keyframes caustics-drift {
   0% {
-    transform: translate3d(-1.5%, -1%, 0) scale(1);
+    transform: translate3d(-1%, -0.5%, 0) scale(1);
   }
   50% {
-    transform: translate3d(1.5%, 1.2%, 0) scale(1.02);
+    transform: translate3d(1%, 0.8%, 0) scale(1.01);
   }
   100% {
-    transform: translate3d(0.5%, -1.5%, 0) scale(1.01);
+    transform: translate3d(0.2%, -0.7%, 0) scale(1.005);
   }
 }
 
 .glass-panel {
-  background: rgb(255 255 255 / 42%);
-  border: 1px solid rgb(255 255 255 / 45%);
+  background: rgba(224, 242, 254, 0.35); /* Sky-blue tint */
+  border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow:
-    0 10px 30px rgb(22 101 143 / 8%),
-    inset 0 1px 0 rgb(255 255 255 / 55%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transform: translateZ(0); /* Força camada de composição */
+    0 10px 40px rgb(56 189 248 / 10%),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  clip-path: polygon(
+    5% 0%, 95% 0%, 100% 15%, 100% 85%, 95% 100%, 5% 100%, 0% 85%, 0% 15%
+  );
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.prismatic-glass {
+  background: linear-gradient(135deg, rgba(186, 230, 253, 0.4) 0%, rgba(224, 242, 254, 0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 0 25px rgba(56, 189, 248, 0.2),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(
+    10% 0%, 90% 0%, 100% 20%, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0% 20%
+  );
+}
+
+/* Hard Diamond Reflection */
+.diamond-reflection {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: diamond-glint 6s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes diamond-glint {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .glass-pill {
-  background: rgb(255 255 255 / 60%);
-  border: 1px solid rgb(255 255 255 / 42%);
-  box-shadow: 0 4px 12px rgb(22 101 143 / 5%);
-  /* Removido blur para salvar performance */
-}
-
-.glass-input {
-  background: rgb(255 255 255 / 40%);
-  border: 1px solid rgb(255 255 255 / 50%);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 60%);
-  backdrop-filter: blur(10px);
+  background: rgb(255 255 255 / 65%);
+  border: 1px solid rgb(255 255 255 / 80%);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  padding: 0.2rem 0.8rem;
 }
 
 .hero-metal,
 .schematic-card,
 .timeline-card,
-.steam-chat,
 .cert-row,
-.contact-item,
-.steam-footer {
+.contact-item {
   background: rgb(255 255 255 / 62%);
   border: 1px solid rgb(255 255 255 / 45%);
   box-shadow:
@@ -263,79 +293,50 @@
 
 .thumbnail-frame {
   position: relative;
-  height: 152px;
+  height: 160px;
   overflow: hidden;
-  border-radius: 0.7rem;
-  border: 1px solid rgb(255 255 255 / 55%);
+  border: 1px solid rgb(255 255 255 / 60%);
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
   box-shadow:
-    0 12px 34px rgb(30 124 174 / 14%),
-    inset 0 1px 0 rgb(255 255 255 / 65%);
-  backdrop-filter: blur(12px);
+    0 12px 30px rgb(56 189 248 / 10%),
+    inset 0 1px 0 rgb(255 255 255 / 70%);
+  clip-path: polygon(0% 20%, 20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%);
 }
 
-.schematic-card {
-  transform: translateY(0) scale(1);
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-}
-
-.schematic-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  border-color: #b3e5fc;
-  box-shadow:
-    0 0 15px rgba(179, 229, 252, 0.4),
-    0 18px 42px rgb(35 135 188 / 16%),
-    0 0 0 1px #b3e5fc,
-    inset 0 1px 0 rgb(255 255 255 / 68%);
-}
-
-.thumbnail-grid {
+.limitless-depth {
   position: absolute;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgb(255 255 255 / 24%) 0px,
-      rgb(255 255 255 / 24%) 1px,
-      transparent 1px,
-      transparent 14px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgb(255 255 255 / 20%) 0px,
-      rgb(255 255 255 / 20%) 1px,
-      transparent 1px,
-      transparent 14px
-    );
+  background: radial-gradient(circle at 30% 30%, rgba(56,189,248,0.15) 0%, transparent 60%);
+  overflow: hidden;
 }
 
-.thumbnail-frame.blueprint,
-.thumbnail-frame.vintage {
-  background: linear-gradient(145deg, rgb(214 243 255 / 65%), rgb(188 230 249 / 85%));
-}
-
-.thumbnail-frame.vintage {
-  filter: saturate(0.92);
-}
-
-.thumbnail-frame::before {
+.limitless-depth::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 40% 30%, rgb(255 255 255 / 35%) 0 2px, transparent 2px);
-  background-size: 4px 4px;
-  opacity: 0.2;
+  background: 
+    conic-gradient(from 180deg at 50% 50%, transparent, rgba(56,189,248,0.1), transparent),
+    conic-gradient(from 0deg at 50% 50%, transparent, rgba(3,105,161,0.05), transparent);
+  animation: rotate-void 20s infinite linear;
+}
+
+@keyframes rotate-void {
+  from { transform: scale(1.5) rotate(0deg); }
+  to { transform: scale(1.5) rotate(360deg); }
 }
 
 .thumbnail-label {
   position: absolute;
-  right: 0.55rem;
-  top: 0.55rem;
-  border: 1px solid rgb(63 159 200 / 30%);
-  background: rgb(255 255 255 / 70%);
-  padding: 0.2rem 0.45rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  color: #1f6e9b;
+  right: 0.6rem;
+  top: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: #0369a1;
+  border-radius: 4px;
 }
 
 .timeline-rail {
@@ -407,91 +408,14 @@
   border-color: rgb(63 159 200 / 45%);
 }
 
-.steam-footer {
+.infinite-footer {
   position: relative;
   overflow: hidden;
-  background: rgb(255 255 255 / 56%);
+  background: rgb(255 255 255 / 45%);
+  backdrop-filter: blur(20px);
 }
 
-.steam-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
 
-.steam-puff {
-  position: absolute;
-  bottom: -10px;
-  width: 120px;
-  height: 58px;
-  border-radius: 9999px;
-  background: radial-gradient(
-    ellipse at center,
-    rgb(255 255 255 / 48%) 0%,
-    rgb(255 255 255 / 0%) 70%
-  );
-  filter: blur(2px);
-  animation: steam-rise 7s ease-in-out infinite;
-}
-
-.steam-puff-1 {
-  left: 12%;
-  animation-delay: 0s;
-}
-
-.steam-puff-2 {
-  left: 44%;
-  animation-delay: 2s;
-}
-
-.steam-puff-3 {
-  left: 76%;
-  animation-delay: 4s;
-}
-
-@keyframes steam-rise {
-  0% {
-    transform: translateY(10px) scale(0.92);
-    opacity: 0;
-  }
-  18% {
-    opacity: 0.5;
-  }
-  70% {
-    opacity: 0.22;
-  }
-  100% {
-    transform: translateY(-48px) scale(1.2);
-    opacity: 0;
-  }
-}
-
-.steam-chat {
-  border: 1px solid rgb(63 159 200 / 24%);
-  background: rgb(255 255 255 / 64%);
-}
-
-.chat-bubble {
-  width: fit-content;
-  max-width: min(92%, 640px);
-  border-radius: 0.72rem;
-  padding: 0.58rem 0.7rem;
-  font-size: 0.86rem;
-  line-height: 1.45;
-}
-
-.assistant-bubble {
-  border: 1px solid rgb(63 159 200 / 25%);
-  background: rgb(224 247 250 / 75%);
-  color: #0e4f72;
-}
-
-.user-bubble {
-  margin-left: auto;
-  border: 1px solid rgb(63 159 200 / 30%);
-  background: rgb(179 229 252 / 60%);
-  color: #10405b;
-}
 
 .pressure-switch {
   display: inline-flex;
