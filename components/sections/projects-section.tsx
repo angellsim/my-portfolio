@@ -77,9 +77,6 @@ export function ProjectsSection() {
             <div className="relative z-10">
               <div className="thumbnail-frame">
                 <div className="limitless-depth" />
-                <div className="thumbnail-label font-mono">
-                  {project.view === "limitless" ? "Limitless Shard" : "Void Shard"}
-                </div>
               </div>
               <div className="mt-4 flex items-start justify-between gap-3">
                 <h4 className="font-heading text-2xl text-sky-900">{project.name}</h4>
